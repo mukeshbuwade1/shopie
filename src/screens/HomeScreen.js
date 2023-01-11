@@ -5,16 +5,19 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import CategoryView from '../components/CategoryView';
 import ScreenContainer from '../components/ScreenContainer';
 import categoryArray from "../assets/data/category"
-
+import FeaturedSection from '../components/FeaturedSection';
+import featuredArray from "../assets/data/featured"
 
 const HomeScreen = (props) => {
-  const {title} =props
+  const { title } = props
   return (
-   <ScreenContainer title={"BASICS"} >
+    <ScreenContainer title={"BASICS"} >
 
-    <CategoryView array= {categoryArray} />
+      <CategoryView array={categoryArray} />
 
-   </ScreenContainer>
+      <FeaturedSection array={featuredArray} />
+
+    </ScreenContainer>
   )
 }
 

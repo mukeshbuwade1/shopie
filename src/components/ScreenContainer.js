@@ -7,9 +7,10 @@ const ScreenContainer = (props) => {
     const { title } = props
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <Box flex={1} py={5} px={"3"}>
+            <Box flex={1} py={5} >
                
                 <HStack
+                px={"3"}
                     alignItems={"center"}
                     justifyContent={"space-between"}
                 >

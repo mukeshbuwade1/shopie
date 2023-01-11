@@ -15,7 +15,7 @@ export default [
         name: "jacket",
     },
     {
-        id: 3,
+        id: 4,
         img: require("../images/cat_pants.png"),
         name: "pants",
     },
