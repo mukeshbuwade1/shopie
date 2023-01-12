@@ -116,7 +116,8 @@ const theme = extendTheme({
             defaultProps: {
                 // colorScheme: 'red',
                 // bg: "white.900"
-                fontFamily: "NunitoSans-Bold"
+                letterSpacing:1,
+                fontFamily: "NunitoSans-SemiBold"
             },
         },
         Text: {

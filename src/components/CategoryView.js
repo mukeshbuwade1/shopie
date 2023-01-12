@@ -3,6 +3,7 @@ import React from 'react'
 import { ImageBackground } from 'react-native';
 import { getProportionalFontSize } from '../utilies/methods/CommonMathods'
 import Icon from 'react-native-vector-icons/dist/Entypo';
+import SectionHeaderView from './SectionHeaderView';
 
 const CategoryView = (props) => {
     const { array } = props;
@@ -18,7 +19,8 @@ const CategoryView = (props) => {
                 marginLeft: 20
             }}
         >
-            <Text bg={"#0003"} px={1}
+            <Text color={"primary.50"}
+            // bg={"#0003"}             px={1}
                 // borderRadius={4} 
                 fontFamily={"NunitoSans-Bold"}
                 fontSize={getProportionalFontSize(12)}
@@ -31,13 +33,18 @@ const CategoryView = (props) => {
 
     return (
         <View my={3}>
-            <HStack justifyContent={"space-between"} alignItems={"center"} p={3} >
+            <SectionHeaderView
+                title={"categories"}
+                iconName ={require("../assets/images/grid.png")}
+                px={3}
+            />
+            {/* <HStack justifyContent={"space-between"} alignItems={"center"} p={3} >
                 <Heading
                     textTransform={"uppercase"}
                     fontSize={getProportionalFontSize(15)}
                 >categories</Heading>
                 <Icon name="grid" color={"#fff"} size={20} />
-            </HStack>
+            </HStack> */}
 
             <FlatList
                 data={array}

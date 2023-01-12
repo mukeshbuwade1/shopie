@@ -11,7 +11,11 @@ import featuredArray from "../assets/data/featured"
 const HomeScreen = (props) => {
   const { title } = props
   return (
-    <ScreenContainer title={"BASICS"} >
+    <ScreenContainer 
+    title={"BASICS"}
+    leftImage={require("../assets/images/Menu.png")}
+    rightImage={require("../assets/images/Bag.png")}
+     >
 
       <CategoryView array={categoryArray} />
 

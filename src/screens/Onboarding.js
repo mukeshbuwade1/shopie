@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Dimensions, SafeAreaView } from 'react-native'
-import { View, Text, FlatList, Image, Box, Center } from 'native-base'
+import { View, Text, FlatList, Image, Box, Center, useColorModeValue } from 'native-base'
 import data from "../assets/data/onboarding"
 import { getProportionalFontSize } from '../utilies/methods/CommonMathods';
 import ImageIndicators from "../components/ImageIndicators"
@@ -8,10 +8,12 @@ import Button from '../components/Button';
 const { width, height } = Dimensions.get("window");
 
 const Onboarding = () => {
-
     const [index, setIndex] = useState(0);
     const indexRef = useRef(index);
     indexRef.current = index;
+
+    const btnBg = useColorModeValue('primary.50', 'primary.800');
+    const btnColor = useColorModeValue('primary.800', 'primary.50');
 
     const onScroll = useCallback((event) => {
         const slideSize = event.nativeEvent.layoutMeasurement.width;
@@ -26,11 +28,6 @@ const Onboarding = () => {
             setIndex(roundIndex);
         }
     }, []);
-
-    // Use the index
-    //   useEffect(() => {
-    //     console.log("index==>",index);
-    //   }, [index]);
 
     const renderItem = ({ item }) => {
         return (
@@ -60,7 +57,7 @@ const Onboarding = () => {
                         <ImageIndicators array={data} active_index={index} />
                     </View>
                     <Center h={"20%"}  >
-                        <Text fontFamily={"NunitoSans-SemiBold"} textTransform={"uppercase"}
+                        <Text fontFamily={"NunitoSans-Bold"} textTransform={"uppercase"}
                             fontSize={getProportionalFontSize(20)} mb={2} letterSpacing={1}
                         >
                             {data[index].title}</Text>
@@ -79,8 +76,8 @@ const Onboarding = () => {
                     />
                     <Button
                         // w, minHeight, bg, mt, color,
-                        bg={"primary.800"}
-                        color={"primary.50"}
+                        bg={btnBg}
+                        color={btnColor}
                         title={"log in"}
                     />
                 </View>
