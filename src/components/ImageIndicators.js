@@ -5,9 +5,9 @@ const ImageIndicators = ({ array, active_index }) => {
 
     const renderItem = ({ item, index }) => (
         <View
-            bg={index == active_index ? "primary.50" : "primary.300"}
-            w={2}
-            h={2}
+            bg={index == active_index ? "primary.50" : "primary.200"}
+            w={index == active_index ?8:2}
+            h={1}
             borderRadius={10}
             mx={1}
         />

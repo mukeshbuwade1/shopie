@@ -6,11 +6,11 @@ import React from 'react'
 import { getProportionalFontSize } from '../utilies/methods/CommonMathods';
 
 const SectionHeaderView = (props) => {
-    const { title ,iconName,iconSize,tintColor,px} = props
+    const { title ,iconName,iconSize,tintColor,px,mt} = props
     const iconTintColor = useColorModeValue('primary.800', 'primary.50');
 
     return (
-        <HStack justifyContent={"space-between"} alignItems={"center"} mb={3} px={px??0} >
+        <HStack justifyContent={"space-between"} alignItems={"center"} mt={mt??0} mb={3} px={px??0} >
             <Text
                 style={{ ...styles.heading, ...styles.fSize17, textTransform: "uppercase" }}
             >{title}</Text>

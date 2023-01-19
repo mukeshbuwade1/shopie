@@ -166,7 +166,7 @@ const theme = extendTheme({
     },
     config: {
         // Changing initialColorMode to 'dark'
-        initialColorMode: 'dark',
+        // initialColorMode: 'dark',
     }
 });
 

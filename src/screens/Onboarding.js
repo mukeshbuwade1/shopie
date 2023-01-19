@@ -5,9 +5,10 @@ import data from "../assets/data/onboarding"
 import { getProportionalFontSize } from '../utilies/methods/CommonMathods';
 import ImageIndicators from "../components/ImageIndicators"
 import Button from '../components/Button';
+import { CommonActions } from '@react-navigation/native';
 const { width, height } = Dimensions.get("window");
 
-const Onboarding = () => {
+const Onboarding = (props) => {
     const [index, setIndex] = useState(0);
     const indexRef = useRef(index);
     indexRef.current = index;
@@ -73,12 +74,19 @@ const Onboarding = () => {
                 <View flex={1} px={10}                >
                     <Button
                         title={"register"}
+                        onPress={()=>alert("screen is under construction")}
                     />
                     <Button
                         // w, minHeight, bg, mt, color,
                         bg={btnBg}
                         color={btnColor}
                         title={"log in"}
+                        onPress={()=>props.navigation.dispatch(
+                            CommonActions.reset({
+                                index:0,
+                                routes:[{name:"LoginScreen"}]
+                            })
+                        )}
                     />
                 </View>
             </Box>

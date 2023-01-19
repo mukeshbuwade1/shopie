@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native'
 import { getProportionalFontSize } from '../utilies/methods/CommonMathods'
 
 const ScreenContainer = (props) => {
-    const { title, leftImage, rightImage, boxStyle, iconSize, tintColor } = props;
+    const { title, leftImage, rightImage, boxStyle, iconSize, tintColor ,shrink} = props;
     const iconTintColor = useColorModeValue('primary.800', 'primary.50');
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -39,7 +39,7 @@ const ScreenContainer = (props) => {
                         />
                     </Pressable>
                 </HStack>
-                <View flex={1}>
+                <View flex={1}  >
                     {props.children}
                 </View>
             </Box>

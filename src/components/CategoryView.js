@@ -38,13 +38,6 @@ const CategoryView = (props) => {
                 iconName ={require("../assets/images/grid.png")}
                 px={3}
             />
-            {/* <HStack justifyContent={"space-between"} alignItems={"center"} p={3} >
-                <Heading
-                    textTransform={"uppercase"}
-                    fontSize={getProportionalFontSize(15)}
-                >categories</Heading>
-                <Icon name="grid" color={"#fff"} size={20} />
-            </HStack> */}
 
             <FlatList
                 data={array}

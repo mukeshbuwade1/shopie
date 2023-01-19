@@ -44,20 +44,13 @@ const ProductDetail = () => {
         {/* description  */}
         <View p={3}
           w={"100%"}>
-           <SectionHeaderView
-                title={"description"}
-                iconName ={require("../assets/images/minus.png")}
-                iconSize={5}
-            />
-          {/* <HStack justifyContent={"space-between"} alignItems={"center"} mb={3} >
-            <Text
-              style={{ ...styles.heading, ...styles.fSize17, textTransform: "uppercase" }}
-            >DESCRIPTION</Text>
-            <Icon name="minus" color={"#fff"} size={20} />
-          </HStack> */}
-          <Text
-          //  style={{...styles.heading, width:"70%",lineHeight:28,}}
-          >Straight cut shirt jacket in sturdy, washed denim. Features a pointed collar and buttons down the front. Dropped shoulders and long sleeves with button cuffs. Detachable tie belt at the waist and a rounded hem.
+          <SectionHeaderView
+            title={"description"}
+            iconName={require("../assets/images/minus.png")}
+            iconSize={5}
+          />
+          <Text>
+            Straight cut shirt jacket in sturdy, washed denim. Features a pointed collar and buttons down the front. Dropped shoulders and long sleeves with button cuffs. Detachable tie belt at the waist and a rounded hem.
           </Text>
         </View>
 

@@ -3,10 +3,10 @@ import React from 'react'
 import { View, Text, Pressable, Center } from 'native-base'
 
 const Button = (props) => {
-    const { w, minHeight, bg, mt, color, title, borderColor } = props
+    const { w, minHeight, bg, mt, color, title, borderColor,onPress } = props
     return (
         <Pressable
-            onPress={() => console.log("hello world")}
+            onPress={() =>onPress?onPress(): console.log("hello world")}
             w={w ?? "100%"}
         >
             <Center
