@@ -11,6 +11,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MyTabBar from './MyTabBar';
 import SearchScreen from '../screens/SearchScreen';
 import HomeScreen from '../screens/HomeScreen';
+import Register from '../screens/Register';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,7 +19,9 @@ const Stack = createNativeStackNavigator();
 
 const AuthNavigation = (props) => {
     const { initialPath } = props?.route?.params || {}
-    const token = useSelector(s => s?.user?.token)
+    const token =  useSelector(s => s?.user?.token)
+    const s =  useSelector(s => s)
+    console.log("redux data is ", s)
     const [authenticated, setAuthenticated] = useState(false)
 
     useEffect(() => {
@@ -29,12 +32,11 @@ const AuthNavigation = (props) => {
     if (token) {
         asyncStorage._setItem(Constant.async_key.newToApp, JSON.stringify({ cache_available: true }))
     }
-
     // component return 
     if (authenticated) {
         return (
             <Tab.Navigator
-            
+
                 tabBar={props => <MyTabBar {...props} />}
                 screenOptions={{
                     headerShown: false
@@ -72,6 +74,7 @@ const AuthNavigation = (props) => {
             >
                 <Stack.Screen name="LoginScreen" component={LoginScreen} />
                 <Stack.Screen name="Onboarding" component={Onboarding} />
+                <Stack.Screen name="Register" component={Register} />
             </Stack.Navigator>
         )
     }

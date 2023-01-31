@@ -57,7 +57,7 @@ export default {
         console.log("data", data)
         console.log("headers", headers)
         try {
-            let res = await axios.post(url, data, headers);
+            let res = await axios.post(url,JSON.stringify(data), headers);
             return res
         } catch (error) {
             console.log("error in catch", error)

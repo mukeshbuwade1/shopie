@@ -7,36 +7,42 @@ import { useForm, Controller } from "react-hook-form";
 import InputBox from '../components/InputBox';
 import APIService from '../services/APIService';
 import httpConfig from '../constants/httpConfig';
-import asyncStorage from "../services/AsyncStoreService";
+import asyncStorage from "../services/AsyncStoreService"
 import Constant from "../constants/Constant"
 import { useSelector, useDispatch } from 'react-redux';
 import { updateUserData } from '../redux/userSlice';
 import Loader from '../components/Loader';
 
-const LoginScreen = (props) => {
+
+const Register = (props) => {
     const [isLoading, setIsLoading] = useState(false)
     const dispatch = useDispatch()
     const iconTintColor = useColorModeValue('primary.800', '#fff');
     let defaultValues = {
+        username: '',
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: '',
     }
     const { control, handleSubmit, formState: { errors }, } = useForm({ defaultValues });
 
     const onSubmit = async (data) => {
         setIsLoading(true)
-        let res = await APIService.postData(httpConfig.endPoints.login, data);
+        let res = await APIService.postData(httpConfig.endPoints.signup, data);
         if (!res.errMsg) {
-            console.log("res", JSON.stringify(res.data))
-            let d = JSON.stringify(res?.data)
-            await asyncStorage._setItem(Constant.async_key.user, d)
-            dispatch(updateUserData(d))
+            console.log("res",  JSON.stringify(res))
         }else{
-            console.log("error", res.errMsg)
+            console.log("error",res.errMsg)
         }
+       
         setIsLoading(false)
     };
 
+
+    const checkapi = async () => {
+        let res = await APIService.getData("test");
+        console.log( "test res" ,res)     
+    };
     return (
         <Center flex={1}>
             {
@@ -49,8 +55,17 @@ const LoginScreen = (props) => {
                     fontFamily: "NunitoSans-Bold",
                     fontSize: getProportionalFontSize(17), textTransform: "uppercase"
                 }}
-            >log in </Text>
+            >Create Account </Text>
             <VStack pt={6} space={5} w={"80%"}>
+                <InputBox
+                    fieldName="username"
+                    placeholder="username"
+                    iconName={"person"}
+                    iconTintColor={iconTintColor}
+                    control={control}
+                    errors={errors}
+                />
+
                 <InputBox
                     fieldName="email"
                     placeholder="mukesh@gmail.com"
@@ -70,25 +85,31 @@ const LoginScreen = (props) => {
                     errors={errors}
                 />
 
+                <InputBox
+                    fieldName="confirmPassword"
+                    // type={"password"}
+                    placeholder='Ux@yZ12'
+                    iconName={"ios-lock-open"}
+                    iconTintColor={iconTintColor}
+                    control={control}
+                    errors={errors}
+                />
+
             </VStack>
 
             <Button
                 onPress={handleSubmit(onSubmit)}
-                title={"log in"}
+                title={"sign up"}
                 w={"80%"}
                 mt={10}
             />
 
             <Pressable mt={3}
-                onPress={() => props.navigation.navigate("Register")}>
-                <Text >New user? SignUp</Text>
-            </Pressable>
-            <Pressable
-                onPress={() => alert("screen is under construction")}>
-                <Text color={"gray.600"}>Forgot Password</Text>
+                onPress={() => props.navigation.navigate("LoginScreen")}>
+                <Text >Already have an account? login</Text>
             </Pressable>
         </Center>
     )
 }
 
-export default LoginScreen
+export default Register

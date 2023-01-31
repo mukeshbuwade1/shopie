@@ -1,10 +1,13 @@
 import { View, Text, Box, HStack, Image, Heading, Pressable, useColorModeValue } from 'native-base'
 import React from 'react'
 import { SafeAreaView } from 'react-native'
+import { useSelector, shallowEqual } from 'react-redux'
 import { getProportionalFontSize } from '../utilies/methods/CommonMathods'
 
 const ScreenContainer = (props) => {
-    const { title, leftImage, rightImage, boxStyle, iconSize, tintColor ,shrink} = props;
+    const qty = useSelector(e => e.cart.qty)
+    console.log("container")
+    const { title, leftImage, rightImage, boxStyle, iconSize, tintColor, shrink } = props;
     const iconTintColor = useColorModeValue('primary.800', 'primary.50');
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -16,6 +19,7 @@ const ScreenContainer = (props) => {
                     my={5}
                     bg={"#0000"}
                     style={boxStyle}
+                    display={shrink ? 'none' : "flex"}
                 >
                     {/* left icon button */}
                     <Pressable>

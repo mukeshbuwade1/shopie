@@ -1,11 +1,19 @@
 import { View, Text, Heading, FlatList, Image, HStack } from 'native-base'
-import React from 'react'
+import React, { memo } from 'react'
 import { ImageBackground } from 'react-native';
 import { getProportionalFontSize } from '../utilies/methods/CommonMathods'
 import Icon from 'react-native-vector-icons/dist/Entypo';
 import SectionHeaderView from './SectionHeaderView';
+import { useSelector,useDispatch } from 'react-redux';
+import { updateCartData } from '../redux/cartSlice';
 
 const CategoryView = (props) => {
+    const dispatch = useDispatch()
+    function o(){
+        dispatch(updateCartData("a"))
+
+    }
+
     const { array } = props;
 
     const renderItem = ({ item, index }) => (
